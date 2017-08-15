@@ -21,9 +21,10 @@ module ActsAsPushable
 
       def gcm_options
         {
-          data: {
+          notification: {
             title: title,
-            message: message,
+            body: message,
+            click_action: navigate_to_view
           }.merge(payload)
         }
       end
