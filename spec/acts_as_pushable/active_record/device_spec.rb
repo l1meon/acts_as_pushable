@@ -46,7 +46,7 @@ RSpec.describe ActsAsPushable::Device do
         user = User.create!
         @android_device = ActsAsPushable::Device.create!({
           token: SecureRandom.uuid,
-          platform: "android",
+          platform: "Android",
           platform_version: "4.4",
           push_environment: "development",
           parent: user,
@@ -60,7 +60,7 @@ RSpec.describe ActsAsPushable::Device do
 
       context 'given the android device' do
         it 'sends a notification' do
-          expect(ActsAsPushable::GCM::Notification).to receive(:send).with({ device: @android_device, message: 'this is a test', title: 'My App', popup: true })
+          expect(ActsAsPushable::FCM::Notification).to receive(:send).with({ device: @android_device, message: 'this is a test', title: 'My App', popup: true })
           @android_device.send_push_notification(message: 'this is a test', title: 'My App', popup: true)
         end
 

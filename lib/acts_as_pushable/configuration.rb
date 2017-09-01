@@ -1,6 +1,6 @@
 module ActsAsPushable
   class Configuration
-    attr_accessor :apn_development_certificate_path, :apn_production_certificate_path, :gcm_key
+    attr_accessor :apn_development_certificate_path, :apn_production_certificate_path, :fcm_key
 
     def initialize
       self.apn_development_certificate_path = Rails.root.join('config', 'acts_as_pushable', 'apn', 'development.pem')

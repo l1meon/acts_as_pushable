@@ -16,7 +16,7 @@ module ActsAsPushable
     end
 
     def android_devices
-      devices.where(platform: 'android')
+      devices.where(platform: 'Android')
     end
 
     def add_device(device_params)

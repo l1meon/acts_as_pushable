@@ -67,7 +67,7 @@ Once you have the certificate from Apple, you will need to export your key and t
 
   ```ruby
   ActsAsPushable.configure do |config|
-    config.gcm_key = 'replace_me_with_your_api_key'
+    config.fcm_key = 'replace_me_with_your_api_key'
   end
   ```
 

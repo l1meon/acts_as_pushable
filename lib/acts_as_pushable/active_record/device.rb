@@ -18,7 +18,7 @@ module ActsAsPushable
     end
 
     def android?
-      platform == 'android'
+      platform == 'Android'
     end
 
     def deactivate
@@ -32,9 +32,9 @@ module ActsAsPushable
       case platform
       when 'ios'
         ActsAsPushable::APN::Notification.send(device: self, message: message, **options)
-      when 'android'
+      when 'Android'
         raise ArgumentError, 'missing keyword: title' unless options.key? :title
-        ActsAsPushable::GCM::Notification.send(device: self, title: options[:title], message: message, **options)
+        ActsAsPushable::FCM::Notification.send(device: self, title: options[:title], message: message, **options)
       end
     end
 

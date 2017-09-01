@@ -16,7 +16,7 @@ RSpec.describe ActsAsPushable::Pushable do
 
       @user.add_device({
         token: @android_token,
-        platform: "android",
+        platform: "Android",
         platform_version: "4.4",
         push_environment: "development",
       })

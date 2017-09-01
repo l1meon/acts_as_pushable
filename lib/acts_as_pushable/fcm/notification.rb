@@ -1,10 +1,10 @@
-require 'gcm'
+require 'fcm'
 
 module ActsAsPushable
-  module GCM
+  module FCM
     class Notification < ActsAsPushable::Notification
       def perform
-        response = client.send([device.token], gcm_options)
+        response = client.send([device.token], fcm_options)
         if response[:not_registered_ids].include? device.token
           device.update_attribute 'invalidated_at', Time.current
         end
@@ -16,10 +16,10 @@ module ActsAsPushable
       attr_accessor :title
 
       def client
-        ::GCM.new(ActsAsPushable.configuration.gcm_key)
+        ::FCM.new(ActsAsPushable.configuration.fcm_key)
       end
 
-      def gcm_options
+      def fcm_options
         {
           notification: {
             title: title,
