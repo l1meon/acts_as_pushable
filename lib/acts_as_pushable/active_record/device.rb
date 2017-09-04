@@ -34,7 +34,9 @@ module ActsAsPushable
         ActsAsPushable::APN::Notification.send(device: self, message: message, **options)
       when 'Android'
         raise ArgumentError, 'missing keyword: title' unless options.key? :title
-        ActsAsPushable::FCM::Notification.send(device: self, title: options[:title], message: message, **options)
+        unless options[:title].nil?
+          ActsAsPushable::FCM::Notification.send(device: self, title: options[:title], message: message, **options)
+        end
       end
     end
 
