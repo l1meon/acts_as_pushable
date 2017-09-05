@@ -12,7 +12,7 @@ module ActsAsPushable
 
     private
 
-    attr_accessor :device, :message, :options, :navigate_to_view
+    attr_accessor :device, :message, :options, :navigate_to_view, :profileid
 
     def default_payload
       {
@@ -24,7 +24,10 @@ module ActsAsPushable
         popup_cancel_button_text: 'Cancel',
         navigate_to_view: nil,
         navigate_to_view_as_modal: true,
-        navigate_to_view_parameters: {}
+        navigate_to_view_parameters: {},
+        data: {
+            profileid: nil
+        }
       }
     end
 
