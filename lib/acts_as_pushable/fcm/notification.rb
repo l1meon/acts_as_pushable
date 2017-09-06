@@ -13,7 +13,7 @@ module ActsAsPushable
 
       private
 
-      attr_accessor :title, :click_action, :tag
+      attr_accessor :title, :click_action
 
       def client
         ::FCM.new(ActsAsPushable.configuration.fcm_key)
@@ -24,8 +24,7 @@ module ActsAsPushable
           notification: {
             title: title,
             body: message,
-            click_action: click_action,
-            tag: tag
+            click_action: click_action
           }.merge(payload)
         }
       end
