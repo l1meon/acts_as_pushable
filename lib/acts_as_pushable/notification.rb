@@ -27,7 +27,7 @@ module ActsAsPushable
         navigate_to_view_parameters: {},
         click_action: nil,
         tag: nil,
-        data: nil
+        data: {}
       }
     end
 
