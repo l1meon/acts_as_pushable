@@ -12,7 +12,7 @@ module ActsAsPushable
 
     private
 
-    attr_accessor :device, :message, :options, :navigate_to_view, :click_action, :tag, :data
+    attr_accessor :device, :message, :options, :navigate_to_view, :click_action, :tag, :data, :profile_id
 
     def default_payload
       {
@@ -27,7 +27,7 @@ module ActsAsPushable
         navigate_to_view_parameters: {},
         click_action: nil,
         tag: nil,
-        data: {}
+        data: { profile_id: nil }
       }
     end
 

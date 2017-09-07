@@ -60,8 +60,15 @@ RSpec.describe ActsAsPushable::Device do
 
       context 'given the android device' do
         it 'sends a notification' do
-          expect(ActsAsPushable::FCM::Notification).to receive(:send).with({ device: @android_device, message: 'this is a test', title: 'My App', popup: true })
-          @android_device.send_push_notification(message: 'this is a test', title: 'My App', popup: true)
+          expect(ActsAsPushable::FCM::Notification).to receive(:send).with({ device: @android_device,
+                                                                             message: 'this is a test',
+                                                                             title: 'My App',
+                                                                             popup: true,
+                                                                             data: { profile_id: '1234-5678-9012-3456'} })
+          @android_device.send_push_notification(message: 'this is a test',
+                                                 title: 'My App',
+                                                 popup: true,
+                                                 data: { profile_id: '1234-5678-9012-3456'})
         end
 
         context 'if the title is not given' do

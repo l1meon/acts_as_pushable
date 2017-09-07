@@ -16,7 +16,10 @@ RSpec.describe ActsAsPushable::FCM::Notification do
     describe '#send' do
       it 'calls send on fcm' do
         expect_any_instance_of(FCM).to receive(:send).once.and_return({ not_registered_ids: [] })
-        ActsAsPushable::FCM::Notification.send(device: @device, title: 'My App', message: 'this is a test', popup_title: "this is a test")
+        ActsAsPushable::FCM::Notification.send(device: @device, title: 'My App',
+                                               message: 'this is a test',
+                                               popup_title: "this is a test",
+                                               data: { profile_id: '1234-5678-9012-3456'})
       end
 
       it 'can invalidate a device' do
