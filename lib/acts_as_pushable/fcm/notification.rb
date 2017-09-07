@@ -13,7 +13,7 @@ module ActsAsPushable
 
       private
 
-      attr_accessor :title, :click_action, :tag
+      attr_accessor :title, :click_action, :tag, :profile_id
 
       def client
         ::FCM.new(ActsAsPushable.configuration.fcm_key)
@@ -26,7 +26,10 @@ module ActsAsPushable
             body: message,
             click_action: click_action,
             tag: tag
-          }.merge(payload)
+          }.merge(payload),
+          data: {
+              profile_id: profile_id
+          }
         }
       end
 
