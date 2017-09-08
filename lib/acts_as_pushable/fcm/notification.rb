@@ -4,7 +4,7 @@ module ActsAsPushable
   module FCM
     class Notification < ActsAsPushable::Notification
       def perform
-        response = client.send([device.token], fcm_options)
+        response = client.send([device.token], fcm_payload)
         if response[:not_registered_ids].include? device.token
           device.update_attribute 'invalidated_at', Time.current
         end
@@ -13,7 +13,7 @@ module ActsAsPushable
 
       private
 
-      attr_accessor :title, :click_action, :tag, :profile_id
+      attr_accessor :title, :click_action, :tag
 
       def client
         ::FCM.new(ActsAsPushable.configuration.fcm_key)
@@ -33,8 +33,23 @@ module ActsAsPushable
         }
       end
 
+      def fcm_payload
+        fcm_options.tap do |k|
+         k[:notification].tap do |j|
+           j.delete(:profile_id)
+         end
+        end
+      end
+
+
+
       def title
         options.delete(:title)
+      end
+
+      def profile_id
+        profile_id = payload[:profile_id]
+        profile_id
       end
     end
   end

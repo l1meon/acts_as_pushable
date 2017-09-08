@@ -12,7 +12,7 @@ module ActsAsPushable
 
     private
 
-    attr_accessor :device, :message, :options, :navigate_to_view
+    attr_accessor :device, :message, :options, :navigate_to_view, :profile_id
 
     def default_payload
       {
@@ -36,7 +36,6 @@ module ActsAsPushable
       payload = default_payload.keys.map do |key|
         [key, options.delete(key) || default_payload[key]]
       end.to_h
-
       payload.merge(options)
     end
   end
