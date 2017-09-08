@@ -64,11 +64,11 @@ RSpec.describe ActsAsPushable::Device do
                                                                              message: 'this is a test',
                                                                              title: 'My App',
                                                                              popup: true,
-                                                                             profile_id: '1234-5678-9012-3456'})
+                                                                             view_id: '1234-5678-9012-3456'})
           @android_device.send_push_notification(message: 'this is a test',
                                                  title: 'My App',
                                                  popup: true,
-                                                 profile_id: '1234-5678-9012-3456')
+                                                 view_id: '1234-5678-9012-3456')
         end
 
         context 'if the title is not given' do

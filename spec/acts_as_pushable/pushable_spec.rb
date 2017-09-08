@@ -60,7 +60,7 @@ RSpec.describe ActsAsPushable::Pushable do
       it 'calls send_push_notification on each device' do
         send_push_notification_count = 0
         allow_any_instance_of(ActsAsPushable::Device).to receive(:send_push_notification) { send_push_notification_count += 1 }
-        @user.send_push_notification(title: 'My App', message: 'this is a test', profile_id: '1234-5678-9012-3456')
+        @user.send_push_notification(title: 'My App', message: 'this is a test', view_id: '1234-5678-9012-3456')
         expect(send_push_notification_count).to eq(2)
       end
     end

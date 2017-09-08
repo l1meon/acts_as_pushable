@@ -19,7 +19,7 @@ RSpec.describe ActsAsPushable::FCM::Notification do
         ActsAsPushable::FCM::Notification.send(device: @device, title: 'My App',
                                                message: 'this is a test',
                                                popup_title: "this is a test",
-                                               profile_id: '1234-5678-9012-3456')
+                                               view_id: '1234-5678-9012-3456')
       end
 
       it 'can invalidate a device' do

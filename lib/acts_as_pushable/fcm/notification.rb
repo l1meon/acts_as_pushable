@@ -28,7 +28,7 @@ module ActsAsPushable
             tag: tag
           }.merge(payload),
           data: {
-              profile_id: profile_id
+              view_id: view_id,
           }
         }
       end
@@ -36,7 +36,7 @@ module ActsAsPushable
       def fcm_payload
         fcm_options.tap do |k|
          k[:notification].tap do |j|
-           j.delete(:profile_id)
+           j.delete(:view_id)
          end
         end
       end
@@ -47,9 +47,9 @@ module ActsAsPushable
         options.delete(:title)
       end
 
-      def profile_id
-        profile_id = payload[:profile_id]
-        profile_id
+      def view_id
+        view_id = payload[:view_id]
+        view_id
       end
     end
   end
