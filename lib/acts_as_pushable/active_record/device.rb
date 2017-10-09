@@ -30,10 +30,8 @@ module ActsAsPushable
 
     def send_push_notification(message:, **options)
       case platform
-        when 'ios'
-          unless options[:tag] == 'status_update'
-            ActsAsPushable::APN::Notification.send(device: self, message: message, **options)
-          end
+      when 'ios'
+        ActsAsPushable::APN::Notification.send(device: self, message: message, **options)
       when 'Android'
         raise ArgumentError, 'missing keyword: title' unless options.key? :title
         unless options[:title] == false
